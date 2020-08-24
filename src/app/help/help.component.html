@@ -1,0 +1,73 @@
+<br />
+<div *ngIf="!deviceXs" class="bounds">
+  <div class="content help-class">
+    <mat-grid-list cols="4" rowHeight="50px">
+      <mat-grid-tile colspan="3" rowspan="1" [style.background]="color1">
+        Angular 9
+      </mat-grid-tile>
+      <mat-grid-tile
+        class="sx-div"
+        colspan="1"
+        rowspan="3"
+        [style.background]="color2"
+      >
+        <img src="assets/images/angular.png" />
+      </mat-grid-tile>
+      <mat-grid-tile
+        *ngIf="!deviceXs"
+        colspan="3"
+        rowspan="2"
+        [style.background]="color3"
+      >
+        The forntend application is desinged in Angular 9, Angular Material,
+        Typescript and css. Key features of this application is custom model &
+        component buinding, pipes, attribute buinding, observable etc.
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+  <br />
+  <div class="help-class">
+    <mat-grid-list cols="4" rowHeight="50px">
+      <mat-grid-tile colspan="3" rowspan="1" [style.background]="color1">
+        Node JS
+      </mat-grid-tile>
+      <mat-grid-tile
+        class="sx-div"
+        colspan="1"
+        rowspan="3"
+        [style.background]="color2"
+      >
+        <img src="assets/images/node.png" />
+      </mat-grid-tile>
+      <mat-grid-tile colspan="3" rowspan="2" [style.background]="color3">
+        Middle tier is developed with Node JS. Used for fast data access and
+        scalibility. REST Apis are exposed to client for dataaccess.
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+  <br />
+  <div class="help-class">
+    <mat-grid-list cols="4" rowHeight="50px">
+      <mat-grid-tile colspan="3" rowspan="1" [style.background]="color1">
+        Mongo DB
+      </mat-grid-tile>
+      <mat-grid-tile
+        class="sx-div"
+        colspan="1"
+        rowspan="3"
+        [style.background]="color2"
+      >
+        <img src="assets/images/mongodb.png" />
+      </mat-grid-tile>
+      <mat-grid-tile colspan="3" rowspan="2" [style.background]="color3">
+        For data retension, Mongo DB is used for this app. Its fast and NoSQL
+        datbase, best suits for application simple data structure.
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+</div>
+<div *ngIf="deviceXs" class="column">
+  <div class="sx-div"><img src="assets/images/angular.png" /></div>
+  <div class="sx-div"><img src="assets/images/node.png" /></div>
+  <div class="sx-div"><img src="assets/images/mongodb.png" /></div>
+</div>

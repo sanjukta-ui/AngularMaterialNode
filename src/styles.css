@@ -1,0 +1,24 @@
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.notif-success {
+  color: #2fdf55 !important;
+}
+
+.notif-fail {
+  color: #ee6969 !important;
+}
+
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 50%;
+}

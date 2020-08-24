@@ -1,0 +1,76 @@
+<br /><br /><br /><br />
+
+<div fxLayout="row" fxLayoutAlign="center center">
+  <mat-card fxFlex="35">
+    <mat-card-content fxLayout="column">
+      <form [formGroup]="loginForm">
+        <h4>Log In</h4>
+
+        <div fxLayout="column">
+          <div>
+            <mat-error *ngIf="loginInvalid">
+              The email and password were not recognised
+            </mat-error>
+          </div>
+          <div></div>
+          <div fxLayoutAlign="center center">
+            <mat-form-field fxFlex="80">
+              <input
+                matInput
+                placeholder="Email"
+                formControlName="email"
+                required
+              />
+
+              <mat-error>
+                Please provide a valid email address
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div fxLayoutAlign="center center">
+            <mat-form-field fxFlex="80">
+              <input
+                matInput
+                type="password"
+                placeholder="Password"
+                formControlName="password"
+                required
+              />
+
+              <mat-error>
+                Please provide a valid password
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div fxLayout="row" fxLayoutAlign="space-evenly center">
+            <div fxLayoutAlign="start center">
+              <button
+                class="btn1"
+                mat-button
+                color="primary"
+                (click)="resetPassword()"
+              >
+                Forget Password
+              </button>
+              |
+              <button
+                class="btn1"
+                mat-button
+                color="primary"
+                (click)="openDialog()"
+              >
+                Register
+              </button>
+            </div>
+            <div fxLayoutAlign="space-evenly center">
+              <button mat-raised-button color="primary" (click)="onSubmit()">
+                Login
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

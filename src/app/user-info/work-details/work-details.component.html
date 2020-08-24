@@ -1,0 +1,54 @@
+<mat-tab-group
+  mat-stretch-tabs
+  (selectedTabChange)="onChange($event)"
+  [selectedIndex]="selectedIndex"
+>
+  <mat-tab label="Tab 1">
+    <!-- <h2>Employee Entry Form</h2> -->
+    <app-work-entry
+      [TabIndex]="'0'"
+      [actionButton]="actionButton"
+    ></app-work-entry>
+  </mat-tab>
+  <mat-tab label="Tab 2" [disabled]="isDisabled">
+    <!-- <h3>List of All Employees</h3> -->
+    <!-- <app-work-entry
+      [TabIndex]="'2'"
+      [actionButton]="actionButton"
+    ></app-work-entry> -->
+    <ng-template
+      *ngIf="lazyCom[1]"
+      [ngComponentOutlet]="lazyCom[1] | async"
+      [ngComponentOutletInjector]="lazyInjector[1]"
+    >
+    </ng-template>
+  </mat-tab>
+  <mat-tab label="Tab 3" [disabled]="isDisabled">
+    <!-- <h2>Department wise list</h2> -->
+    <!-- <app-work-entry
+      [TabIndex]="'3'"
+      [actionButton]="actionButton"
+    ></app-work-entry> -->
+    <ng-template
+      *ngIf="lazyCom[2]"
+      [ngComponentOutlet]="lazyCom[2] | async"
+      [ngComponentOutletInjector]="lazyInjector[2]"
+    >
+    </ng-template>
+  </mat-tab>
+  <mat-tab label="Tab 4" [disabled]="isDisabled">
+    <!-- <app-work-entry
+      [TabIndex]="'4'"
+      [actionButton]="actionButton"
+    ></app-work-entry> -->
+    <ng-template
+      *ngIf="lazyCom[3]"
+      [ngComponentOutlet]="lazyCom[3] | async"
+      [ngComponentOutletInjector]="lazyInjector[3]"
+    >
+    </ng-template>
+  </mat-tab>
+  <!-- <mat-tab label="Fifth">
+    <p>Hello, fifth tab!</p>
+  </mat-tab> -->
+</mat-tab-group>

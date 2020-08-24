@@ -1,0 +1,128 @@
+<div fxLayout="row" fxLayoutAlign="center center">
+  <div fxFlex="80">
+    <div fxLayout="column">
+      <form [formGroup]="signupForm">
+        <div fxLayoutAlign="center center">
+          <h4>{{ formText }}</h4>
+        </div>
+        <br />
+
+        <div fxLayout="column">
+          <div>
+            <mat-error *ngIf="loginInvalid">
+              The Email and password were not recognised
+            </mat-error>
+          </div>
+          <div fxLayoutAlign="center center">
+            <mat-form-field fxFlex="80">
+              <input
+                matInput
+                placeholder="Enter Firstname"
+                formControlName="fname"
+                required
+              />
+
+              <mat-error>
+                Please provide a Firstname
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div fxLayoutAlign="center center">
+            <mat-form-field fxFlex="80">
+              <input
+                matInput
+                placeholder="Enter Lastname"
+                formControlName="lname"
+                required
+              />
+
+              <mat-error>
+                Please provide a Lastname
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div fxLayoutAlign="center center">
+            <mat-form-field fxFlex="80">
+              <input
+                matInput
+                placeholder="Email"
+                formControlName="email"
+                required
+              />
+
+              <mat-error>
+                Please provide a valid email address
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div fxLayoutAlign="center center">
+            <mat-form-field fxFlex="80">
+              <input
+                matInput
+                placeholder="Mobile"
+                formControlName="mobile"
+                maxlength="10"
+                onkeypress="return /[0-9]/i.test(event.key)"
+                required
+              />
+
+              <mat-error>
+                Please provide a valid mobile
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div fxLayoutAlign="center center">
+            <mat-form-field fxFlex="80">
+              <input
+                matInput
+                type="password"
+                placeholder="Password"
+                formControlName="password"
+                maxlength="15"
+                required
+              />
+
+              <mat-error>
+                Please provide a valid password [at leaset 5 chars].
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div fxLayoutAlign="center center">
+            <mat-form-field fxFlex="80">
+              <input
+                matInput
+                type="password"
+                placeholder="Re-enter Password"
+                formControlName="password2"
+                maxlength="15"
+                required
+              />
+
+              <mat-error>
+                Please provide a valid password [at leaset 5 chars].
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div fxLayoutAlign="center center">
+            <button
+              mat-button
+              color="primary"
+              (click)="restForm()"
+              [disabled]="disableDuringEdit"
+            >
+              Reset
+            </button>
+            &nbsp;
+            <button mat-raised-button color="primary" (click)="onSubmit()">
+              Save
+            </button>
+            &nbsp;
+            <button mat-button color="primary" (click)="cancelForm()">
+              Cancel
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

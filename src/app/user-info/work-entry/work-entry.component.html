@@ -1,0 +1,152 @@
+<div class="column example-div-width">
+  <h5>About The Work</h5>
+  <mat-label
+    >Choose one or more type of work and provide detailed
+    information.</mat-label
+  >
+  <!-- <h5>{{ actionButton }}{{ id }}</h5> -->
+
+  <form [formGroup]="empForm">
+    <div fxLayout="row" fxLayoutAlign="space-between center">
+      <div fxFlex="80" fxFlexOffset="15">
+        <div fxLayout="row">
+          <div fxLayoutAlign="left">
+            <mat-form-field>
+              <mat-label>Project</mat-label>
+              <input
+                matInput
+                formControlName="project"
+                [errorStateMatcher]="matcher"
+                placeholder="Project 1"
+              />
+              <!-- <mat-hint>Errors appear instantly!</mat-hint> -->
+              <mat-error> Project Name is <strong>required</strong> </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div fxLayoutAlign="left">
+            <mat-form-field>
+              <mat-label>Form</mat-label>
+              <input
+                matInput
+                formControlName="formname"
+                [errorStateMatcher]="matcher"
+                placeholder="Form 1"
+              />
+              <!-- <mat-hint>Errors appear instantly!</mat-hint> -->
+              <mat-error> Form Name is <strong>required</strong> </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="left center">
+          <div fxLayoutAlign="left">
+            <mat-form-field
+              width="200px"
+              class="demo-full-width"
+              appearance="fill"
+            >
+              <mat-label>Choose Status</mat-label>
+              <select
+                matNativeControl
+                formControlName="status"
+                [errorStateMatcher]="matcher"
+              >
+                <option value=""></option>
+                <option
+                  *ngFor="let item of statusList | keyvalue"
+                  value="{{ item.value }}"
+                  >{{ item.key }}</option
+                >
+              </select>
+            </mat-form-field>
+          </div>
+          <div fxLayoutAlign="left">
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <mat-radio-group
+              aria-label="Select an option"
+              formControlName="gender"
+            >
+              <mat-radio-button
+                *ngFor="let item of genderList | keyvalue"
+                value="{{ item.value }}"
+                >{{ item.key }}&nbsp;&nbsp;</mat-radio-button
+              >
+            </mat-radio-group>
+          </div>
+        </div>
+
+        <div fxLayout="row" fxLayoutAlign="space-between center">
+          <div fxFlex="32">
+            <mat-form-field class="example-full-width">
+              <mat-label>Permanent Address</mat-label>
+              <textarea
+                matInput
+                #perAdd
+                formControlName="permaentaddress"
+                maxlength="150"
+                placeholder="Permanent Address"
+                rows="5"
+              ></textarea>
+              <mat-hint align="end">{{ perAdd.value.length }} / 150</mat-hint>
+              <mat-error> Enter address with Zip code.</mat-error>
+            </mat-form-field>
+          </div>
+          <div fxFlex="32">
+            <mat-form-field class="example-full-width">
+              <mat-label>Temporary Address</mat-label>
+              <textarea
+                matInput
+                #temAdd
+                formControlName="temporaryaddress"
+                maxlength="150"
+                placeholder="Temporary Address"
+                rows="5"
+              ></textarea>
+              <mat-hint align="end">{{ temAdd.value.length }} / 150</mat-hint>
+              <mat-error> Enter address with Zip code.</mat-error>
+            </mat-form-field>
+          </div>
+          <div fxFlex="32">
+            <mat-form-field class="example-full-width">
+              <mat-label>Communication Address</mat-label>
+              <textarea
+                matInput
+                #commAdd
+                formControlName="communicationaddress"
+                maxlength="150"
+                placeholder="Communication Address"
+                rows="5"
+              ></textarea>
+              <mat-hint align="end">{{ commAdd.value.length }} / 150</mat-hint>
+              <mat-error> Enter address with Zip code.</mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+
+  <br />
+  <div>
+    <button
+      mat-stroked-button
+      color="primary"
+      (click)="submitData()"
+      [disabled]="disableButton"
+    >
+      {{ actionButton }}</button
+    >&nbsp;
+    <button
+      mat-stroked-button
+      color="warning"
+      (click)="clearFileds()"
+      [disabled]="disableButton"
+    >
+      Clear
+    </button>
+    <!-- &nbsp;
+    <button mat-stroked-button color="warning" (click)="openDialog()">
+      Clear
+    </button> -->
+  </div>
+</div>

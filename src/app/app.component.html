@@ -1,0 +1,35 @@
+<mat-toolbar
+  *ngIf="loginSuccess"
+  color="primary"
+  class="navbar navbar-default fixed-top"
+  fxLayout="row"
+  fxLayoutAlign="space-between center"
+>
+  <nav>
+    <a mat-button routerLink="/home" routerLinkActive="mat-accent"
+      ><mat-icon>corporate_fare</mat-icon>Home</a
+    >
+    <a mat-button routerLink="/details" routerLinkActive="mat-accent"
+      ><mat-icon>how_to_reg</mat-icon>Your Work</a
+    >
+
+    <a mat-button routerLink="/help" routerLinkActive="mat-accent"
+      ><mat-icon>help</mat-icon>Help</a
+    >
+  </nav>
+  <nav>
+    <a
+      mat-button
+      (click)="logOut()"
+      routerLinkActive="mat-accent"
+      matBadge="{{ fname | slice: 0:1 }}{{ lname | slice: 0:1 }}"
+      matBadgePosition="middle"
+      matBadgeColor="accent"
+      ><mat-icon>logout</mat-icon>Logout</a
+    >
+  </nav>
+</mat-toolbar>
+
+<div align="center" width="300px">
+  <router-outlet></router-outlet>
+</div>

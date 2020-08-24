@@ -1,0 +1,94 @@
+<app-error *ngIf="ErrorMsg" [ErrorMsg]="ErrorMsg"></app-error>
+<div class="column center">
+  <h4>Your submission.</h4>
+
+  <div>
+    <mat-progress-spinner
+      *ngIf="spinner"
+      [color]="color"
+      mode="indeterminate"
+    ></mat-progress-spinner>
+
+    <table>
+      <tr>
+        <td>
+          <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+            <ng-container matColumnDef="id">
+              <th mat-header-cell *matHeaderCellDef>Id#</th>
+              <td mat-cell *matCellDef="let element">{{ element._id }}</td>
+            </ng-container>
+
+            <!-- Name Column -->
+            <ng-container matColumnDef="ProjectName">
+              <th mat-header-cell *matHeaderCellDef>Project Name</th>
+              <td mat-cell *matCellDef="let element">{{ element.project }}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="FormName">
+              <th mat-header-cell *matHeaderCellDef>Form Name</th>
+              <td mat-cell *matCellDef="let element">{{ element.formname }}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="Status">
+              <th mat-header-cell *matHeaderCellDef>Status</th>
+              <td mat-cell *matCellDef="let element">
+                {{ element.status == "C" ? "Completed" : "Work In Progress" }}
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="ModifiedDate">
+              <th mat-header-cell *matHeaderCellDef>Modified</th>
+              <td mat-cell *matCellDef="let element">
+                {{ element.modified | date: "dd/MM/yyyy" }}
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Action">
+              <th mat-header-cell *matHeaderCellDef>
+                &nbsp;&nbsp;&nbsp;&nbsp;Action
+              </th>
+              <td mat-cell *matCellDef="let element">
+                <button mat-icon-button (click)="EditRec(element._id)">
+                  <mat-icon color="accent">edit</mat-icon>
+                </button>
+
+                <button mat-icon-button (click)="DeleteRec(element._id)">
+                  <mat-icon color="warn">remove_circle_outline</mat-icon>
+                </button>
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Action2">
+              <th mat-header-cell *matHeaderCellDef></th>
+              <td mat-cell *matCellDef="let element" style="text-align: right;">
+                <button mat-icon-button>
+                  <mat-icon color="accent" (click)="ViewRec(element._id)"
+                    >play_arrow</mat-icon
+                  >
+                </button>
+              </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="container">
+            <mat-paginator
+              [pageSizeOptions]="[5, 10, 20]"
+              showFirstLastButtons
+            ></mat-paginator>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="start center">
+    <button mat-stroked-button color="primary" (click)="goToWork()">
+      Add a new project +
+    </button>
+  </div>
+</div>
